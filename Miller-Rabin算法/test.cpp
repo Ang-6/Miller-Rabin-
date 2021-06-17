@@ -63,17 +63,20 @@ bool Miller_Rabin(ll n)
 		t++;
 	}
 
-	for (int i = 0; i < 20; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		//随机数a
 		ll a = rand() % (n - 1) + 1;
+		cout <<"a:"<< a<<endl;
 		// 计算a^m
 		ll x = qul_pow(a, m, n), y;
-
+		cout << "x:"<<x<<endl;
+		cout << endl;
 		for (int j = 0; j < t; j++)
 		{
 			y = qul_mul(x, x, n);  //进行(x*x)%n操作。
-
+			cout <<"y:"<< y<<endl;
+			cout << endl << endl ;
 			//不满足二次探测定理，也就是y得1了但是x并不等于1或者n-1，那么n就一定不是质数。
 			if (y == 1 && x != 1 && x != n - 1)
 			{
@@ -95,11 +98,12 @@ bool Miller_Rabin(ll n)
 int main()
 {
 	ll n;
-
+	
 	while (cin >> n)
 	{
 		cout << Miller_Rabin(n) << endl;
 	}
-
+	
+	
 	return 0;
 }
